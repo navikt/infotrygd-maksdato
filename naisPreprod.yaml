@@ -6,10 +6,10 @@ metadata:
   labels:
     team: infotrygd
 spec:
-  image:  docker.pkg.github.com/navikt/infotrygd-maksdato/maksdato:1.0
+  image: docker.pkg.github.com/navikt/infotrygd-maksdato/maksdato:1.0
   port: 8080 # Required. The port number which is exposed by the container and should receive HTTP traffic.
   liveness: # HTTP endpoint that signals 200 OK when the application is running.
-    path: /rest/internal/isAlive
+    path: /isAlive
     initialDelay: 120
     timeout: 1
     periodSeconds: 5     # How often (in seconds) to perform the probe. Default to 10 seconds
@@ -17,7 +17,7 @@ spec:
       # nais will try failureThreshold times before giving up and restarting the Pod
     # Defaults to 3
   readiness: # HTTP endpoint that signals 200 OK when it is okay to start routing traffic to the application.
-    path: /rest/internal/isAlive
+    path: /isAlive
     # /rest/internal/isAlive
     initialDelay: 120
     timeout: 1
