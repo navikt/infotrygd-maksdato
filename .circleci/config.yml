@@ -14,6 +14,7 @@ jobs:
     executor: openjdk
     steps:
       - checkout
+      - run: gradle dependencies
       - run: gradlew build
       - persist_to_workspace:
           root: .
