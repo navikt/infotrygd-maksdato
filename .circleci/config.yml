@@ -59,7 +59,6 @@ workflows:
       - test:
           requires:
             - install
-            -
       - manual-build-and-push-docker-image-to-gpr:
           requires:
             - test
