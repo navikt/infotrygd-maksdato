@@ -23,7 +23,7 @@ class PeriodeRepository {
         sql += "   is10_arbufoer "           // sykmeldtfom
         sql += " , is10_arbufoer_tom "       // sykmeldttom
         sql += " from is_periode_10 "
-        sql += " where fnr = '$fnr'"
+        sql += " where f_nr = '$fnr'"
         sql += " and is10_stoenads_type = '  '"
         sql += " and is10_frisk != 'H'"
         sql += "  order by is10_arbufoer"
