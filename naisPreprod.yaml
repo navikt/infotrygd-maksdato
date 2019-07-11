@@ -52,3 +52,12 @@ spec:
   configMaps:
   # files: null # Optional. Specify config maps that will have their data mounted into the container as files.
   #    - example_files_configmap
+  env:
+  - name: INFOTRYGDSP_URL
+    value: "jdbc:oracle:thin:@a01dbfl033.adeo.no:1521/cdcq"
+  - name: INFOTRYGDSP_PLATFORM
+    value: "org.hibernate.dialect.Oracle10gDialect"
+  - name: LOGGING_SPRING
+    value: "INFO"
+  - name: LOGGING_NAV
+    value: "INFO"

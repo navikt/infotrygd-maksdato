@@ -68,7 +68,7 @@ workflows:
           build-and-push-docker-image: false
           context: NAIS deployment
           repo: navikt/infotrygd-maksdato
-          image: docker.pkg.github.com/navikt/infotrygd-kontantstotte/kontantstotte:1.0
+          image: docker.pkg.github.com/navikt/infotrygd-maksdato/maksdato:1.0
           github-app-id: 34242
           nais-template: naisPreprod.yaml
           environment: dev-fss
