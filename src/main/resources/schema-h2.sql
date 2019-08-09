@@ -1,6 +1,8 @@
 --------------------------------------------------
 -- Create Table INFOTRYGD_Q0.IS_PERIODE_10
 --------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS INFOTRYGD_Q0;
+
 Create table INFOTRYGD_Q0.IS_PERIODE_10 (
     IS01_PERSONKEY                 NUMBER(15)          DEFAULT 0  NOT NULL,
     IS10_ARBUFOER_SEQ              NUMBER(8)           NOT NULL,
@@ -151,16 +153,17 @@ Create table INFOTRYGD_Q0.IS_PERIODE_10 (
     ENDRET_I_KILDE                 TIMESTAMP(6)        DEFAULT localtimestamp  NOT NULL,
     KILDE_IS                       VARCHAR2(12)        DEFAULT ' '  NOT NULL,
     REGION                         CHAR(1)             DEFAULT ' '  NOT NULL,
-    ID_PERI10                      NUMBER              DEFAULT "INFOTRYGD_Q0"."ISEQ$$_96072".nextval  NOT NULL) 
-Tablespace INFOTRYGD_Q0 
-Storage (Initial 64K Next 1M MinExtents 1 MaxExtents Unlimited) 
-PctFree 10  
-IniTrans 1 
-Maxtrans 255  ;
+    ID_PERI10                      NUMBER              DEFAULT 0  NOT NULL);
+--    ID_PERI10                      NUMBER              DEFAULT "INFOTRYGD_Q0"."ISEQ$$_96072".nextval  NOT NULL);
+--Tablespace INFOTRYGD_Q0
+--Storage (Initial 64K Next 1M MinExtents 1 MaxExtents Unlimited)
+--PctFree 10
+--IniTrans 1
+--Maxtrans 255  ;
 
 --------------------------------------------------
 -- Create Table INFOTRYGD_Q0.T_DELYTELSE
---------------------------------------------------
+----------------------------------------------------
 Create table INFOTRYGD_Q0.T_DELYTELSE (
     VEDTAK_ID                      NUMBER              NOT NULL,
     TYPE_DELYTELSE                 CHAR(2)             NOT NULL,
@@ -174,16 +177,16 @@ Create table INFOTRYGD_Q0.T_DELYTELSE (
     TYPE_SATS                      CHAR(1)             NOT NULL,
     TYPE_UTBETALING                CHAR(1)             NOT NULL,
     LINJE_ID                       NUMBER ,
-    OPPRETTET                      TIMESTAMP(6)        DEFAULT current_timestamp  NOT NULL) 
-Tablespace INFOTRYGD_Q0 
-Storage (Initial 64K Next 1M MinExtents 1 MaxExtents Unlimited) 
-PctFree 10  
-IniTrans 1 
-Maxtrans 255  ;
-
---------------------------------------------------
--- Create Table INFOTRYGD_Q0.T_DELYTELSE_SP_FA_BS
---------------------------------------------------
+    OPPRETTET                      TIMESTAMP(6)        DEFAULT current_timestamp  NOT NULL);
+--Tablespace INFOTRYGD_Q0
+--Storage (Initial 64K Next 1M MinExtents 1 MaxExtents Unlimited)
+--PctFree 10
+--IniTrans 1
+--Maxtrans 255  ;
+--
+----------------------------------------------------
+---- Create Table INFOTRYGD_Q0.T_DELYTELSE_SP_FA_BS
+----------------------------------------------------
 Create table INFOTRYGD_Q0.T_DELYTELSE_SP_FA_BS (
     VEDTAK_ID                      NUMBER              NOT NULL,
     TYPE_DELYTELSE                 CHAR(2)             NOT NULL,
@@ -204,29 +207,29 @@ Create table INFOTRYGD_Q0.T_DELYTELSE_SP_FA_BS (
     TYPE_SATS                      CHAR(4)             NOT NULL,
     SATS_DAGER                     NUMBER(7, 2)        NOT NULL,
     BRUKERID                       CHAR(8)             NOT NULL,
-    OPPRETTET                      TIMESTAMP(6)        DEFAULT current_timestamp  NOT NULL) 
-Tablespace INFOTRYGD_Q0 
-Storage (Initial 64K Next 1M MinExtents 1 MaxExtents Unlimited) 
-PctFree 10  
-IniTrans 1 
-Maxtrans 255  ;
-
---------------------------------------------------
--- Create Table INFOTRYGD_Q0.T_LOPENR_FNR
---------------------------------------------------
+    OPPRETTET                      TIMESTAMP(6)        DEFAULT current_timestamp  NOT NULL);
+--Tablespace INFOTRYGD_Q0
+--Storage (Initial 64K Next 1M MinExtents 1 MaxExtents Unlimited)
+--PctFree 10
+--IniTrans 1
+--Maxtrans 255  ;
+--
+----------------------------------------------------
+---- Create Table INFOTRYGD_Q0.T_LOPENR_FNR
+----------------------------------------------------
 Create table INFOTRYGD_Q0.T_LOPENR_FNR (
     PERSON_LOPENR                  NUMBER              NOT NULL,
     PERSONNR                       CHAR(11)            NOT NULL,
-    OPPRETTET                      TIMESTAMP(6)        DEFAULT current_timestamp  NOT NULL) 
-Tablespace INFOTRYGD_Q0 
-Storage (Initial 64K Next 1M MinExtents 1 MaxExtents Unlimited) 
-PctFree 10  
-IniTrans 1 
-Maxtrans 255  ;
-
---------------------------------------------------
--- Create Table INFOTRYGD_Q0.T_STONAD
---------------------------------------------------
+    OPPRETTET                      TIMESTAMP(6)        DEFAULT current_timestamp  NOT NULL);
+--Tablespace INFOTRYGD_Q0
+--Storage (Initial 64K Next 1M MinExtents 1 MaxExtents Unlimited)
+--PctFree 10
+--IniTrans 1
+--Maxtrans 255  ;
+--
+----------------------------------------------------
+---- Create Table INFOTRYGD_Q0.T_STONAD
+----------------------------------------------------
 Create table INFOTRYGD_Q0.T_STONAD (
     STONAD_ID                      NUMBER              NOT NULL,
     PERSON_LOPENR                  NUMBER              NOT NULL,
@@ -238,16 +241,16 @@ Create table INFOTRYGD_Q0.T_STONAD (
     TIDSPUNKT_OPPHORT              TIMESTAMP(6) ,
     TIDSPUNKT_REG                  TIMESTAMP(6) ,
     BRUKERID                       CHAR(8) ,
-    OPPRETTET                      TIMESTAMP(6)        DEFAULT current_timestamp  NOT NULL) 
-Tablespace INFOTRYGD_Q0 
-Storage (Initial 64K Next 1M MinExtents 1 MaxExtents Unlimited) 
-PctFree 10  
-IniTrans 1 
-Maxtrans 255  ;
-
---------------------------------------------------
--- Create Table INFOTRYGD_Q0.T_VEDTAK
---------------------------------------------------
+    OPPRETTET                      TIMESTAMP(6)        DEFAULT current_timestamp  NOT NULL);
+--Tablespace INFOTRYGD_Q0
+--Storage (Initial 64K Next 1M MinExtents 1 MaxExtents Unlimited)
+--PctFree 10
+--IniTrans 1
+--Maxtrans 255  ;
+--
+----------------------------------------------------
+---- Create Table INFOTRYGD_Q0.T_VEDTAK
+----------------------------------------------------
 Create table INFOTRYGD_Q0.T_VEDTAK (
     VEDTAK_ID                      NUMBER              NOT NULL,
     PERSON_LOPENR                  NUMBER              NOT NULL,
@@ -271,9 +274,9 @@ Create table INFOTRYGD_Q0.T_VEDTAK (
     STONAD_ID                      NUMBER              NOT NULL,
     KIDNR                          VARCHAR2(25) ,
     FAKTNR                         VARCHAR2(33) ,
-    OPPRETTET                      TIMESTAMP(6)        DEFAULT current_timestamp  NOT NULL) 
-Tablespace INFOTRYGD_Q0 
-Storage (Initial 64K Next 1M MinExtents 1 MaxExtents Unlimited) 
-PctFree 10  
-IniTrans 1 
-Maxtrans 255  ;
+    OPPRETTET                      TIMESTAMP(6)        DEFAULT current_timestamp  NOT NULL);
+--Tablespace INFOTRYGD_Q0
+--Storage (Initial 64K Next 1M MinExtents 1 MaxExtents Unlimited)
+--PctFree 10
+--IniTrans 1
+--Maxtrans 255  ;
