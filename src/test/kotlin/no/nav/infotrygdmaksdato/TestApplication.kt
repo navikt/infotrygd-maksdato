@@ -1,6 +1,6 @@
-package no.nav.infotrygdmaksdato
+// package no.nav.infotrygdmaksdato
 
-import org.springframework.boot.autoconfigure.SpringBootApplication
+// import org.springframework.boot.autoconfigure.SpringBootApplication
 
-@SpringBootApplication
-class TestApplication
+// @SpringBootApplication
+// class TestApplication
