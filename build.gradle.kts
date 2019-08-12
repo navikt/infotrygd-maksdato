@@ -10,8 +10,8 @@ val micrometerRegistryVersion = "1.1.2"
 val tokenSupportVersion = "0.2.18"
 val jacksonVersion = "2.9.9"
 val swaggerVersion = "2.9.2"
-val oracleusername = System.getenv("ORACLEUSERNAME")
-val oraclepassword = System.getenv("ORACLEPASSWORD")
+val oracleusername = "richard.martinsen@nav.no"
+val oraclepassword = "Infotrygd1"
 
 val mainClass = "no.nav.maksdato.MaksdatoApplicationKt"
 
