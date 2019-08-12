@@ -20,12 +20,9 @@ class MaksdatoController (val periodeService: PeriodeService){
 
     @RequestMapping(method = [RequestMethod.GET], value = ["/v1/hentMaksdato"])
     fun hentMaksdato(@RequestParam(name = "fnr", required = true) fnr : String) : MaksdatoResult {
-        //Hente perioder fra Oracle...
-        var tidsperiode = Tidsperiode(LocalDate.parse("2019-03-01"), LocalDate.parse("2019-03-30"))
-        var perioder = mutableListOf<Tidsperiode>()
-        perioder.add(tidsperiode)
-        //
-
+        val perioder = periodeService.hentPerioder(fnr).map {
+            Tidsperiode(it.sykemeldtFra, it.sykemeldtTilOgMed)
+        }
 
         // Finne Arbkat
         //IS10-ARBKAT
@@ -37,10 +34,7 @@ class MaksdatoController (val periodeService: PeriodeService){
 
         //Finne alder fra fnr
 
-
-        var grunnlagsdata = Grunnlagsdata(LocalDate.now(), LocalDate.now().plusDays(14), 40, ARBEIDSTAKER, perioder)
-        var maksdato = maksdato(grunnlagsdata)
-
-        return maksdato
+        val grunnlagsdata = Grunnlagsdata(LocalDate.now(), LocalDate.now().plusDays(14), 40, ARBEIDSTAKER, perioder)
+        return maksdato(grunnlagsdata)
     }
 }

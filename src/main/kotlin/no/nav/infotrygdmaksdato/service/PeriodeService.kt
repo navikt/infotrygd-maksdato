@@ -1,14 +1,14 @@
 package no.nav.infotrygdmaksdato.service
 
-import no.nav.infotrygdmaksdato.model.PeriodeDTO
-import no.nav.infotrygdmaksdato.repository.PeriodeRepository
+import no.nav.infotrygdmaksdato.model.PeriodeEntity
+import no.nav.infotrygdmaksdato.repository.PeriodeJpaRepository
 import org.springframework.stereotype.Service
 
 @Service
-class PeriodeService (val periodeRepository: PeriodeRepository) {
+class PeriodeService (val periodeRepository: PeriodeJpaRepository) {
 
-    fun hentPerioder(fnr: String) : List<PeriodeDTO> {
-        return periodeRepository.hentPerioder(fnr)
+    fun hentPerioder(fnr: String) : List<PeriodeEntity> {
+        return periodeRepository.findByFnr(fnr)
     }
 
     override fun toString(): String {
