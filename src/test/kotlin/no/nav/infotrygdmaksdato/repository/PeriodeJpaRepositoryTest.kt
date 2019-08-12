@@ -37,7 +37,7 @@ class PeriodeJpaRepositoryTest {
 
     @Test
     fun findByFnr() {
-        val perioder = repository.findByFnr(31280010912345)
+        val perioder = repository.findByFnr("80010912345")
         assertThat(perioder).hasSize(2)
         System.err.println(perioder)
     }
