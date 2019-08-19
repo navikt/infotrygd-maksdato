@@ -47,7 +47,7 @@ jobs:
           at: ~/app
       - run: docker login -u "$DOCKER_LOGIN" -p "$DOCKER_PASSWORD" docker.pkg.github.com
       - run: |
-          IMAGE="docker.pkg.github.com/navikt/infotrygd-maksdato/maksdato:1.3"
+          IMAGE="docker.pkg.github.com/navikt/infotrygd-maksdato/maksdato:1.4"
           echo $IMAGE
           docker build -t $IMAGE .
           IMAGE_ID=`docker images $IMAGE -q`
@@ -68,7 +68,7 @@ workflows:
           build-and-push-docker-image: false
           context: NAIS deployment
           repo: navikt/infotrygd-maksdato
-          image: docker.pkg.github.com/navikt/infotrygd-maksdato/maksdato:1.3
+          image: docker.pkg.github.com/navikt/infotrygd-maksdato/maksdato:1.4
           github-app-id: 34242
           nais-template: naisPreprod.yaml
           environment: dev-fss
