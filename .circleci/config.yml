@@ -11,9 +11,6 @@ executors:
 
 jobs:
   install:
-    branches:
-      only:
-        - master
     executor: openjdk
     steps:
       - checkout
@@ -59,7 +56,10 @@ jobs:
 workflows:
   test-and-deploy:
     jobs:
-      - install
+      - install:
+        filters:
+          branches:
+            only: master
       - test:
           requires:
             - install
