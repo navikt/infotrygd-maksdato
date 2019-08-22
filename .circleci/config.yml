@@ -11,6 +11,9 @@ executors:
 
 jobs:
   install:
+    branches:
+      only:
+        - master
     executor: openjdk
     steps:
       - checkout
