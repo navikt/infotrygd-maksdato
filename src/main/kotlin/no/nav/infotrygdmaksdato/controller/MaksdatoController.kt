@@ -21,6 +21,7 @@ class MaksdatoController (val periodeService: PeriodeService){
         //Hente perioder fra Oracle...
 
         var sisteSykemelding = periodeService.hentPerioder(fnr).first()
+        logger.info(sisteSykemelding.toString())
 
         var formatter = DateTimeFormatter.ofPattern("yyyyMMdd")
         var maksDato: LocalDate = LocalDate.parse(sisteSykemelding.maksDato.toString(), formatter)
@@ -42,6 +43,8 @@ class MaksdatoController (val periodeService: PeriodeService){
                 tomDato = tomDato,
                 antallDagerTilgode = antallDagerIgjen
         )
+
+        logger.info(resp.toString())
 
 //
 //        var tidsperiode = Tidsperiode(LocalDate.parse("2019-03-01"), LocalDate.parse("2019-03-30"))
