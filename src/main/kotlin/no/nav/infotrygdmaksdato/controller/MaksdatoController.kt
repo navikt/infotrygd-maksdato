@@ -26,14 +26,22 @@ class MaksdatoController (val periodeService: PeriodeService){
         var maksDato: LocalDate = LocalDate.parse(sisteSykemelding.maksDato.toString(), formatter)
         var fomDato: LocalDate = LocalDate.parse(sisteSykemelding.sykemeldtFom.toString(), formatter)
         var tomDato: LocalDate = LocalDate.parse(sisteSykemelding.sykemeldtTom.toString(), formatter)
-        var aktivSykemelding: Boolean = if (sisteSykemelding.sluttDato > 0) false else true
+        var aktivSykemelding: Boolean = if (tomDato > LocalDate.now()) false else true
+        var antallDagerIgjen = 0
+        if (aktivSykemelding) {
+            antallDagerIgjen = LocalDate.now().datesUntil(maksDato).count().toInt()
+        } else {
+            antallDagerIgjen = tomDato.datesUntil(maksDato).count().toInt()
+        }
 
 
         var resp: Periode = Periode(
                 maksDato = maksDato,
                 aktivSykemelding = aktivSykemelding,
                 fomDato = fomDato,
-                tomDato = tomDato)
+                tomDato = tomDato,
+                antallDagerTilgode = antallDagerIgjen
+        )
 
 //
 //        var tidsperiode = Tidsperiode(LocalDate.parse("2019-03-01"), LocalDate.parse("2019-03-30"))
