@@ -22,16 +22,21 @@ class PeriodeRepository {
 
         sql += "   is10_arbufoer "           // sykmeldtfom
         sql += " , is10_arbufoer_tom "       // sykmeldttom
+        sql += " , is10_slutt "              // friskmeldt dato
+        sql += " , is10_max "                // maksdato
         sql += " from is_periode_10 "
         sql += " where f_nr = '$fnr'"
         sql += " and is10_stoenads_type = '  '"
         sql += " and is10_frisk != 'H'"
-        sql += "  order by is10_arbufoer"
+        sql += "  order by is10_arbufoer desc"
 
         val periodeDTOList = jdbcTemplate.query(sql, arrayOf()
         ) { rs, rowNum ->
             PeriodeDTO(
-                    rs.getInt("is10_arbufoer"), rs.getInt("is10_arbufoer_tom")
+                    rs.getInt("is10_arbufoer"),
+                    rs.getInt("is10_arbufoer_tom"),
+                    rs.getInt("is10_slutt"),
+                    rs.getInt("is10_max")
             )
         }.stream().collect(Collectors.toList())
 
