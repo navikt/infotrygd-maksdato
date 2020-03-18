@@ -24,20 +24,25 @@ class MaksdatoController (val periodeService: PeriodeService){
         logger.info(sisteSykemelding.toString())
 
         var formatter = DateTimeFormatter.ofPattern("yyyyMMdd")
-        var maksDato: LocalDate = LocalDate.parse(sisteSykemelding.maksDato.toString(), formatter)
-        var fomDato: LocalDate = LocalDate.parse(sisteSykemelding.sykemeldtFom.toString(), formatter)
-        var tomDato: LocalDate = LocalDate.parse(sisteSykemelding.sykemeldtTom.toString(), formatter)
-        var aktivSykemelding: Boolean = if (tomDato > LocalDate.now()) false else true
+        var infotrygdMaksDato = LocalDate.parse(sisteSykemelding.maksDato.toString(), formatter)
+        var fomDato = LocalDate.parse(sisteSykemelding.sykemeldtFom.toString(), formatter)
+        var tomDato = LocalDate.parse(sisteSykemelding.sykemeldtTom.toString(), formatter)
+        var aktivSykemelding = if (tomDato > LocalDate.now()) false else true
         var antallDagerIgjen = 0
         if (aktivSykemelding) {
-            antallDagerIgjen = LocalDate.now().datesUntil(maksDato).count().toInt()
+            antallDagerIgjen = LocalDate.now().datesUntil(infotrygdMaksDato).count().toInt()
         } else {
-            antallDagerIgjen = tomDato.datesUntil(maksDato).count().toInt()
+            antallDagerIgjen = tomDato.datesUntil(infotrygdMaksDato).count().toInt()
         }
+        if (tomDato.datesUntil(LocalDate.now()).count() > (26*7)) {
+            antallDagerIgjen = sisteSykemelding.maksAntallDager
+        }
+        var maksDato = LocalDate.now().plusDays(antallDagerIgjen.toLong())
 
-
-        var resp: Periode = Periode(
+        var resp = Periode(
+                versjon = "alpha",
                 maksDato = maksDato,
+                infotrygdMaksDato = infotrygdMaksDato,
                 aktivSykemelding = aktivSykemelding,
                 fomDato = fomDato,
                 tomDato = tomDato,
