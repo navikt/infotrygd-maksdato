@@ -8,6 +8,6 @@ class PeriodeDTO (var sykemeldtFom: Int,
                   ) {
 
     override fun toString(): String {
-        return javaClass.simpleName + "[fom = " + sykemeldtFom + ", tom = " + sykemeldtTom + "]"
+        return javaClass.simpleName + "[fom = " + sykemeldtFom + ", tom = " + sykemeldtTom + ", sluttDato = " + sluttDato + ", maksDato = " + maksDato + ", maksAntallDager = " + maksAntallDager + "]"
     }
 }
