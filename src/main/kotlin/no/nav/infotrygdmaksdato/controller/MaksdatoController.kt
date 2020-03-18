@@ -21,7 +21,7 @@ class MaksdatoController (val periodeService: PeriodeService){
         //Hente perioder fra Oracle...
 
         var sisteSykemelding = periodeService.hentPerioder(fnr).first()
-        logger.info(sisteSykemelding.toString())
+        this.logger.info(sisteSykemelding.toString())
 
         var formatter = DateTimeFormatter.ofPattern("yyyyMMdd")
         var infotrygdMaksDato = LocalDate.parse(sisteSykemelding.maksDato.toString(), formatter)
