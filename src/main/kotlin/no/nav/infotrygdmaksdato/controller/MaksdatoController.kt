@@ -22,6 +22,7 @@ class MaksdatoController (val periodeService: PeriodeService){
 
         var sisteSykemelding = periodeService.hentPerioder(fnr).first()
         this.logger.info(sisteSykemelding.toString())
+        logger.info("start")
 
         var formatter = DateTimeFormatter.ofPattern("yyyyMMdd")
         var infotrygdMaksDato = LocalDate.parse(sisteSykemelding.maksDato.toString(), formatter)
